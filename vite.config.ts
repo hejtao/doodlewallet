@@ -2,11 +2,24 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { viteSingleFile } from "vite-plugin-singlefile";
+import fs from "fs";
+import path from "path";
 
 export default defineConfig({
   plugins: [
     react(),
-    viteSingleFile()
+    viteSingleFile(),
+    {
+      name: 'rename-output',
+      closeBundle() {
+        const distDir = path.resolve(__dirname, 'dist');
+        const oldPath = path.join(distDir, 'index.html');
+        const newPath = path.join(distDir, 'doodlewallet-standalone.html');
+        if (fs.existsSync(oldPath)) {
+          fs.renameSync(oldPath, newPath);
+        }
+      }
+    }
   ],
   root: "src",
   resolve: {
