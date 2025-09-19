@@ -1,0 +1,23 @@
+{
+  "name": "doodlewallet",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite dev --port 3745"
+  },
+  "dependencies": {
+    "@types/qrcode": "^1.5.5",
+    "perfect-freehand": "^1.2.2",
+    "qrcode": "^1.5.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.4",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0",
+    "yarn": "^1.22.22"
+  }
+}
