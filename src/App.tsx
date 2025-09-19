@@ -51,6 +51,21 @@ function App() {
     }
   }, [warningMessage]);
 
+  // Handle page refresh/close warning when strokes exist
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (strokes.length > 0) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [strokes.length]);
+
   // Function to handle undo last stroke
   const handleUndo = () => {
     if (strokes.length > 0) {
