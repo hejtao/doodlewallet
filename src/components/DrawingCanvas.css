@@ -15,3 +15,55 @@
   pointer-events: none;
   touch-action: none;
 }
+
+/* Canvas action buttons in bottom right corner */
+.action-buttons {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  display: flex;
+  gap: 8px;
+  z-index: 1000;
+}
+
+.action-btn {
+  border: none;
+  padding: 4px 30px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.action-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.action-btn:disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.undo-btn {
+  background-color: rgba(245, 158, 11, 0.9);
+  color: white;
+}
+
+.undo-btn:hover:not(:disabled) {
+  background-color: rgba(217, 119, 6, 0.9);
+  transform: translateY(-2px);
+}
+
+.clear-btn {
+  background-color: rgba(239, 68, 68, 0.9);
+  color: white;
+}
+
+.clear-btn:hover:not(:disabled) {
+  background-color: rgba(220, 38, 38, 0.9);
+  transform: translateY(-2px);
+}

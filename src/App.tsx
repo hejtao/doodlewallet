@@ -203,8 +203,6 @@ function App() {
         nextEntropySize={getNextEntropySize(strokes.length)}
         mnemonicWordCount={getMnemonicWordCount(strokes.length)}
         onGenerateMnemonic={generateMnemonicWords}
-        onUndo={handleUndo}
-        onClear={handleClear}
         disabled={strokes.length < 128}
       />
 
@@ -221,6 +219,8 @@ function App() {
         onStartDrawing={startDrawing}
         onDraw={draw}
         onStopDrawing={stopDrawing}
+        onUndo={handleUndo}
+        onClear={handleClear}
       />
 
       {/* Toolbar */}

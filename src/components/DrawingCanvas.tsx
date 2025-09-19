@@ -12,6 +12,8 @@ interface DrawingCanvasProps {
   onStartDrawing: (e: React.MouseEvent<HTMLCanvasElement>) => void;
   onDraw: (e: React.MouseEvent<HTMLCanvasElement>) => void;
   onStopDrawing: () => void;
+  onUndo: () => void;
+  onClear: () => void;
 }
 
 export interface DrawingCanvasRef {
@@ -29,6 +31,8 @@ const DrawingCanvas = forwardRef<DrawingCanvasRef, DrawingCanvasProps>(
       onStartDrawing,
       onDraw,
       onStopDrawing,
+      onUndo,
+      onClear,
     },
     ref
   ) => {
@@ -156,6 +160,24 @@ const DrawingCanvas = forwardRef<DrawingCanvasRef, DrawingCanvasProps>(
         />
         {/* SVG for rendering perfect-freehand strokes */}
         <svg ref={svgRef} className='svg' />
+        
+        {/* Canvas action buttons in bottom right corner */}
+        <div className='action-buttons'>
+          <button 
+            className='action-btn undo-btn' 
+            onClick={onUndo} 
+            disabled={strokes.length === 0}
+          >
+            Undo
+          </button>
+          <button 
+            className='action-btn clear-btn' 
+            onClick={onClear} 
+            disabled={strokes.length === 0}
+          >
+            Clear
+          </button>
+        </div>
       </div>
     );
   }

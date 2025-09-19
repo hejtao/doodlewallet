@@ -7,8 +7,6 @@ interface StrokeCounterProps {
   nextEntropySize: number;
   mnemonicWordCount: number;
   onGenerateMnemonic: () => void;
-  onUndo: () => void;
-  onClear: () => void;
   disabled: boolean;
 }
 
@@ -17,8 +15,6 @@ const StrokeCounter: React.FC<StrokeCounterProps> = ({
   nextEntropySize,
   mnemonicWordCount,
   onGenerateMnemonic,
-  onUndo,
-  onClear,
   disabled,
 }) => {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -37,7 +33,7 @@ const StrokeCounter: React.FC<StrokeCounterProps> = ({
         Strokes: {strokeCount}/{nextEntropySize}
         <div className='info-icon-container'>
           <img
-            style={{ width: 18, flexShrink: 0, marginLeft: 4, cursor: 'pointer' }}
+            style={{ width: 20, flexShrink: 0, cursor: 'pointer' }}
             src={infoIcon}
             alt='info icon'
             onClick={handleInfoClick}
@@ -46,16 +42,7 @@ const StrokeCounter: React.FC<StrokeCounterProps> = ({
         </div>
       </div>
       
-      <div className='action-buttons'>
-        <button className='action-btn undo-btn' onClick={onUndo} disabled={strokeCount === 0}>
-          Undo
-        </button>
-        <button className='action-btn clear-btn' onClick={onClear} disabled={strokeCount === 0}>
-          Clear
-        </button>
-      </div>
-      
-      <button className='action-btn mnemonic-btn' onClick={onGenerateMnemonic} disabled={disabled}>
+      <button className='mnemonic-btn' onClick={onGenerateMnemonic} disabled={disabled}>
         Generate {mnemonicWordCount} Mnemonic Words
       </button>
     </div>
