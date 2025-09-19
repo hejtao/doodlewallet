@@ -146,7 +146,7 @@ const DrawingCanvas = forwardRef<DrawingCanvasRef, DrawingCanvasProps>(
       return () => {
         window.removeEventListener('resize', resizeCanvas);
       };
-    }, [currentStroke]);
+    }, [strokes, currentStroke]);
 
     return (
       <div className='canvas'>
