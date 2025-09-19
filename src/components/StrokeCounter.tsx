@@ -7,6 +7,8 @@ interface StrokeCounterProps {
   nextEntropySize: number;
   mnemonicWordCount: number;
   onGenerateMnemonic: () => void;
+  onUndo: () => void;
+  onClear: () => void;
   disabled: boolean;
 }
 
@@ -15,6 +17,8 @@ const StrokeCounter: React.FC<StrokeCounterProps> = ({
   nextEntropySize,
   mnemonicWordCount,
   onGenerateMnemonic,
+  onUndo,
+  onClear,
   disabled,
 }) => {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -41,7 +45,17 @@ const StrokeCounter: React.FC<StrokeCounterProps> = ({
           {showTooltip && <div className='tooltip'>{tooltipContent}</div>}
         </div>
       </div>
-      <button className='mnemonic-btn' onClick={onGenerateMnemonic} disabled={disabled}>
+      
+      <div className='action-buttons'>
+        <button className='action-btn undo-btn' onClick={onUndo} disabled={strokeCount === 0}>
+          Undo
+        </button>
+        <button className='action-btn clear-btn' onClick={onClear} disabled={strokeCount === 0}>
+          Clear
+        </button>
+      </div>
+      
+      <button className='action-btn mnemonic-btn' onClick={onGenerateMnemonic} disabled={disabled}>
         Generate {mnemonicWordCount} Mnemonic Words
       </button>
     </div>

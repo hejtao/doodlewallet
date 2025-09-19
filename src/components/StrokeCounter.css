@@ -67,33 +67,69 @@
   }
 }
 
-/* Mnemonic button styles */
-.mnemonic-btn {
-  background-color: #1971c2;
-  color: white;
+/* Action buttons container */
+.action-buttons {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+/* Action button styles */
+.action-btn {
   border: none;
-  padding: 6px 12px;
+  padding: 4px 8px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
   cursor: pointer;
   transition: all 0.2s ease;
   outline: none;
+  flex: 1;
+}
+
+.action-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.action-btn:disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.undo-btn {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.undo-btn:hover:not(:disabled) {
+  background-color: #d97706;
+  transform: translateY(-2px);
+}
+
+.clear-btn {
+  background-color: #ef4444;
+  color: white;
+}
+
+.clear-btn:hover:not(:disabled) {
+  background-color: #dc2626;
+  transform: translateY(-2px);
+}
+
+.mnemonic-btn {
+  background-color: #1971c2;
+  color: white;
+  padding: 6px 12px;
+  font-size: 12px;
 }
 
 .mnemonic-btn:hover:not(:disabled) {
   background-color: #1864ab;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .mnemonic-btn:active:not(:disabled) {
   transform: translateY(0);
-}
-
-.mnemonic-btn:disabled {
-  background-color: #c1e1ff;
-  color: #444c53;
-  cursor: not-allowed;
-  transform: none;
-  text-decoration-line: line-through;
 }

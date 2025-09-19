@@ -107,6 +107,11 @@ const DrawingCanvas = forwardRef<DrawingCanvasRef, DrawingCanvasProps>(
       getCanvas: () => canvasRef.current,
     }));
 
+    // Effect to handle strokes changes (for undo/clear operations)
+    useEffect(() => {
+      redrawAllStrokes();
+    }, [strokes]);
+
     useEffect(() => {
       const canvas = canvasRef.current;
       const svg = svgRef.current;

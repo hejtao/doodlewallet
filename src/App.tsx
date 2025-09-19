@@ -51,6 +51,24 @@ function App() {
     }
   }, [warningMessage]);
 
+  // Function to handle undo last stroke
+  const handleUndo = () => {
+    if (strokes.length > 0) {
+      setStrokes(prev => prev.slice(0, -1));
+      setStrokeCenters(prev => prev.slice(0, -1));
+      setMnemonicWords(''); // Reset mnemonic words when strokes change
+      setQrCodeDataUrl(''); // Reset QR code when strokes change
+    }
+  };
+
+  // Function to handle clear all strokes
+  const handleClear = () => {
+    setStrokes([]);
+    setStrokeCenters([]);
+    setMnemonicWords(''); // Reset mnemonic words
+    setQrCodeDataUrl(''); // Reset QR code
+  };
+
   // Start drawing
   const startDrawing = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current?.getCanvas();
@@ -170,6 +188,8 @@ function App() {
         nextEntropySize={getNextEntropySize(strokes.length)}
         mnemonicWordCount={getMnemonicWordCount(strokes.length)}
         onGenerateMnemonic={generateMnemonicWords}
+        onUndo={handleUndo}
+        onClear={handleClear}
         disabled={strokes.length < 128}
       />
 
