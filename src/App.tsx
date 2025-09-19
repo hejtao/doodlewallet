@@ -159,7 +159,7 @@ function App() {
         .slice(0, entropySize)
         .map((center) => {
           const { x, y } = center;
-          if ((x + y) % 2 == 0) return '0';
+          if (Math.round(x + y) % 2 == 0) return '0';
           return '1';
         })
         .join('');

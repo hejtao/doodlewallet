@@ -18,8 +18,8 @@ export const calculateStrokeCenter = (points: Point[]): StrokeCenter => {
   });
 
   return {
-    x: Math.floor(sumX / points.length),
-    y: Math.floor(sumY / points.length),
+    x: sumX / points.length,
+    y: sumY / points.length,
   };
 };
 
