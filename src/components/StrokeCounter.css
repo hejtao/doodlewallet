@@ -16,6 +16,13 @@
   text-align: center;
 }
 
+.stroke-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
 /* Mnemonic button styles */
 .mnemonic-btn {
   background-color: #1971c2;

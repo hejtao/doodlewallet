@@ -1,4 +1,5 @@
 import '@/components/StrokeCounter.css';
+import infoIcon from '@/static/info.png';
 
 interface StrokeCounterProps {
   strokeCount: number;
@@ -17,12 +18,11 @@ const StrokeCounter: React.FC<StrokeCounterProps> = ({
 }) => {
   return (
     <div className='stroke-counter'>
-      Strokes: {strokeCount}/{nextEntropySize}
-      <button
-        className='mnemonic-btn'
-        onClick={onGenerateMnemonic}
-        disabled={disabled}
-      >
+      <div className='stroke-info'>
+        Strokes: {strokeCount}/{nextEntropySize}
+        <img style={{ width: 18, flexShrink: 0, marginLeft: 4, cursor: 'pointer' }} src={infoIcon} alt='info icon' />
+      </div>
+      <button className='mnemonic-btn' onClick={onGenerateMnemonic} disabled={disabled}>
         Generate {mnemonicWordCount} Mnemonic Words
       </button>
     </div>
