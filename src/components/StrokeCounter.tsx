@@ -25,7 +25,7 @@ const StrokeCounter: React.FC<StrokeCounterProps> = ({
 
   const tooltipContent = `Draw at least ${nextEntropySize} strokes to generate ${
     (nextEntropySize / 32 + nextEntropySize) / 11
-  } mnemonic words. Each stroke adds 1 bit of randomness (according to the average position of all points that the stroke samples) to the final entropy. The more strokes you draw, the stronger the mnemonic phrase.`;
+  } mnemonic words. Each stroke adds 1 bit of randomness (according to the average position of all points that the stroke is sampled) to the final entropy. The more strokes you draw, the stronger the mnemonic phrase.`;
 
   return (
     <div className='stroke-counter'>
