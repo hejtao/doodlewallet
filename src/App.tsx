@@ -127,7 +127,7 @@ function App() {
 
       if (distance < 50) {
         canvasRef.current?.clearCurrentStrokeFromCanvas();
-        setWarningMessage('Too close to last stroke');
+        setWarningMessage('Too close to the last stroke!');
         setCurrentStroke([]);
         return;
       }

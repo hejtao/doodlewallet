@@ -85,7 +85,7 @@
 }
 
 .brush-btn.active {
-  border-color: #999;
+  border-color: #d0d0d0;
 }
 
 .brush-btn.active:hover {
