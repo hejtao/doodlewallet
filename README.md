@@ -1,6 +1,8 @@
-# Doodle Wallet
+# Doodlewallet
 
 A tool for generating mnemonic words by your own random behavior.
+
+![doodlewallet.png](doodlewallet.png)
 
 ## Online version
 
