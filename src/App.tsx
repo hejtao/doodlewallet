@@ -152,44 +152,42 @@ function App() {
 
   // Function to handle generate mnemonic words button click
   const generateMnemonicWords = async () => {
-    if (!mnemonicWords) {
-      const index = getEntropySizeIndex(strokes.length);
-      const entropySize = ENTROPY_SIZES[index];
-      const entropy = strokeCenters
-        .slice(0, entropySize)
-        .map((center) => {
-          const { x, y } = center;
-          if (Math.round(x + y) % 2 == 0) return '0';
-          return '1';
-        })
-        .join('');
+    const index = getEntropySizeIndex(strokes.length);
+    const entropySize = ENTROPY_SIZES[index];
+    const entropy = strokeCenters
+      .slice(0, entropySize)
+      .map((center) => {
+        const { x, y } = center;
+        if (Math.round(x + y) % 2 == 0) return '0';
+        return '1';
+      })
+      .join('');
 
-      const checksum = await calculateChecksum(entropy, entropySize);
-      const newEntropy = entropy + checksum;
-      const words = [];
-      for (let i = 11; i <= newEntropy.length; i += 11) {
-        const word = newEntropy.slice(i - 11, i);
-        const index = parseInt(word, 2);
-        words.push(WORDLISTS[index]);
-      }
+    const checksum = await calculateChecksum(entropy, entropySize);
+    const newEntropy = entropy + checksum;
+    const words = [];
+    for (let i = 11; i <= newEntropy.length; i += 11) {
+      const word = newEntropy.slice(i - 11, i);
+      const index = parseInt(word, 2);
+      words.push(WORDLISTS[index]);
+    }
 
-      const mnemonicString = words.join(' ');
-      setMnemonicWords(mnemonicString);
+    const mnemonicString = words.join(' ');
+    setMnemonicWords(mnemonicString);
 
-      // Generate QR code
-      try {
-        const qrDataUrl = await QRCode.toDataURL(mnemonicString, {
-          width: 256,
-          margin: 2,
-          color: {
-            dark: '#000000',
-            light: '#FFFFFF',
-          },
-        });
-        setQrCodeDataUrl(qrDataUrl);
-      } catch (error: any) {
-        setWarningMessage('Generating QR code error: ' + (error?.message || 'Unknown error'));
-      }
+    // Generate QR code
+    try {
+      const qrDataUrl = await QRCode.toDataURL(mnemonicString, {
+        width: 256,
+        margin: 2,
+        color: {
+          dark: '#000000',
+          light: '#FFFFFF',
+        },
+      });
+      setQrCodeDataUrl(qrDataUrl);
+    } catch (error: any) {
+      setWarningMessage('Generating QR code error: ' + (error?.message || 'Unknown error'));
     }
 
     setShowModal(true);
