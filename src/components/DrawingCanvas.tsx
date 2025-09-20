@@ -124,14 +124,14 @@ const DrawingCanvas = forwardRef<DrawingCanvasRef, DrawingCanvasProps>(
       const resizeCanvas = () => {
         const width = window.innerWidth;
         const height = window.innerHeight;
-
+      
         canvas.width = width;
         canvas.height = height;
-
+      
         svg.setAttribute('width', width.toString());
         svg.setAttribute('height', height.toString());
         svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-
+      
         // Redraw all strokes after resizing
         redrawAllStrokes();
       };

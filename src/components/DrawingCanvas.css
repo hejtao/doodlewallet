@@ -3,8 +3,10 @@
   display: block;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background-color: #fff9e0;
   cursor: crosshair;
+  overflow: hidden;
 }
 
 .svg {
